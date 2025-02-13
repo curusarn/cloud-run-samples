@@ -50,6 +50,7 @@ func scriptHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(500)
 	}
 	w.Write(out)
+	log.Printf("Wrote output: %s", out)
 }
 
 // [END run_helloworld_server]
