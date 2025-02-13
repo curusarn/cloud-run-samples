@@ -51,6 +51,17 @@ func scriptHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(out)
 	log.Printf("Wrote output: %s", out)
+	// open file shared-volume/logs/output.log
+	err = os.MkdirAll("shared-volume/logs", 0755)
+	if err != nil {
+		log.Printf("Failed to create directories: %v", err)
+	}
+	file, err := os.OpenFile("shared-volume/logs/output.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+	file.Write(out)
 }
 
 // [END run_helloworld_server]
