@@ -17,7 +17,7 @@
 # [START run_helloworld_shell]
 
 set -e
-echo "Hello ${NAME:-World}! v4"
+echo "Hello ${NAME:-World}! v5"
 
 # [END run_helloworld_shell]
 # [END cloudrun_helloworld_shell]
